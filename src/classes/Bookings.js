@@ -1,9 +1,11 @@
-class Booking {
-    constructor(bookingData, roomData){
-        this.bookingData = bookingData;
-        this.roomData = roomData;
-    }
+class Bookings {
+    constructor(booking){
+       this.id = booking.id;
+       this.userID = booking.userID;
+       this.date = booking.date;
+       this.roomNumber = booking.roomNumber
+       this.roomServiceCharges = booking.roomServiceCharges;
+    };
+};
 
-}
-
-module.exports = Booking;
+module.exports = Bookings;

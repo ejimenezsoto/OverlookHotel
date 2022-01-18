@@ -1,10 +1,12 @@
 class User {
-    constructor(id,name,bookings){
-        this.id = id;
-        this.name = name;
-        this.bookings = bookings;
+    constructor(user){
+        this.id = user.id;
+        this.name = user.name;
         this.pastBookings = [];
-    }
+        this.futureBookings = [];
+        this.allBookings = [];
+        this.totalSpent = 0;
+    };
 
-}
+};
 module.exports = User;
