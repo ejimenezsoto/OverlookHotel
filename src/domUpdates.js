@@ -6,6 +6,7 @@ const welcomeMessage = document.querySelector('.user-dashboard-welcome-message')
 const pastBookingsTable = document.getElementById('past-bookings-table');
 const futureBookingsTable = document.getElementById('future-bookings-table');
 const totalSpent = document.querySelector('.total-spent')
+const allRoomsSection = document.querySelector('.all-rooms-section');
 
 
 
@@ -53,11 +54,18 @@ const domUpdates = {
             </tr>
             `
         })
-
         totalSpent.innerText = `Your total spent at the Overlook Hotel is ${currentUser.totalSpent.toFixed(2)}`
+    },
+
+
+    filterRoomType(rommValue,availableRooms){
+
+    },
 
 
 
+    displayRooms(){
+        
     }
 
 
