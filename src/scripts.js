@@ -10,6 +10,11 @@ import domUpdates from './domUpdates'
 const checkBookings = document.getElementById('checkDateAvail');
 const filterRoom = document.getElementById('checkRoomType');
 const allRoomsSection = document.querySelector('.all-rooms-section');
+const logInSection = document.querySelectorAll('.log-in-Section');
+const logInButton = document.getElementById('log-in-button');
+
+
+
 
 
 //Global Variables
@@ -19,25 +24,27 @@ let allRooms = [];
 let allBookings = [];
 let hotel;
 
-Promise.all([customerData, roomData, bookingData])
-.then((data) => {
-   data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
-   data[1].rooms.forEach(room => allRooms.push(new Room(room)))
-   data[0].customers.forEach(user => allUsers.push(new User(user,allRooms)))
+// Promise.all([customerData, roomData, bookingData])
+// .then((data) => {
+//    data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
+//    data[1].rooms.forEach(room => allRooms.push(new Room(room)))
+//    data[0].customers.forEach(user => allUsers.push(new User(user,allRooms)))
+//    currentUser = allUsers[Math.floor(Math.random() * allUsers.length)]
+//    currentUser.getAllBookings(allBookings);
+//    currentUser.returnTotalSpent(allRooms)
+//    domUpdates.displayDashboardInfo(currentUser,allRooms);
+//    hotel = new Hotel(currentUser,allRooms,allBookings)
+// });
 
-   currentUser = allUsers[Math.floor(Math.random() * allUsers.length)]
-   currentUser.getAllBookings(allBookings);
-   currentUser.returnTotalSpent(allRooms)
 
-   domUpdates.displayDashboardInfo(currentUser,allRooms);
 
-   hotel = new Hotel(currentUser,allRooms,allBookings)
-});
+
+
+
 
 const bookRoom = (currentUser,event,availableRooms) => {
    const date = new Date(checkBookings.value).toISOString().split('T')[0].split('-').join('/');
    const rooms = availableRooms.find(room => event.target.id == room.roomNumber)
-   console.log(event.target.id)
    const bookingObject = {
       'userID': currentUser.id,
       'date': date,
@@ -49,7 +56,6 @@ const bookRoom = (currentUser,event,availableRooms) => {
 
 checkBookings.addEventListener('change', function (){
      hotel.filterAvailableRooms(checkBookings.value)
-      
 });
 
 filterRoom.addEventListener('change', function (){
@@ -60,11 +66,8 @@ allRoomsSection.addEventListener('click', function(event) {
    bookRoom(currentUser,event,hotel.availableRooms.flat(1))
 })
 
-
-
-
-
-
-
-
+logInButton.addEventListener('click', function(event) {
+   event.preventDefault()
+   console.log(event)
+})
 

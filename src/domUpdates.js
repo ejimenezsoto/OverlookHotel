@@ -77,7 +77,7 @@ const domUpdates = {
                         <li>${room.numBeds}</li>
                         <li>${room.costPerNight}</li>
                     </ul>
-                    <button id=${room.roomNumber}>Book</button>
+                    <button class='book-button' id=${room.roomNumber}>Book</button>
                 </div>
                     `
                 })
@@ -105,7 +105,7 @@ const domUpdates = {
                     <li>${room.numBeds}</li>
                     <li>${room.costPerNight}</li>
                     </ul>
-                    <button id=${room.roomNumber}>Book</button>
+                    <button class='book-button' id=${room.roomNumber}>Book</button>
                 </div>
                 `
             })
