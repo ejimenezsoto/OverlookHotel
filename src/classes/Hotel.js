@@ -7,6 +7,7 @@ class Hotel {
     };
 
     filterAvailableRooms(date){
+        this.availableRooms = [];
         let checkDate = date.split('-').join('');
         const allBookings = this.allBookings.filter(booking => {
             let bookedDate = booking.date.split('/').join('')
