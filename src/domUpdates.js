@@ -67,7 +67,6 @@ const domUpdates = {
             this.displayRooms(availableRooms)
         } else {
             const roomType = availableRooms.flat(1).filter(room => room.type === roomValue)
-            console.log(roomType)
             if(roomType.length > 0){
                 roomType.forEach(room => {
                     allRoomsSection.innerHTML += `
@@ -97,7 +96,6 @@ const domUpdates = {
             allRoomsSection.innerHTML = `<h1> Sorry theres no rooms available for that date! </h1>`
         } else {
             availableRooms.flat(1).forEach(room => {
-                console.log(room)
                 allRoomsSection.innerHTML += `
                 <div>
                     <ul>

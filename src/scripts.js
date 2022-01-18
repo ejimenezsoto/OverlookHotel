@@ -47,6 +47,11 @@ const updateUserData = (id) => {
 }
 
 const bookRoom = (currentUser,event,availableRooms) => {
+   domUpdates.hide([allRoomsSection])
+   domUpdates.show([allRoomsSection])
+   allRoomsSection.innerHTML = `
+   <p>Thank You for booking a room!</p>
+   `
    const date = new Date(checkBookings.value).toISOString().split('T')[0].split('-').join('/');
    const rooms = availableRooms.find(room => event.target.id == room.roomNumber)
    const bookingObject = {
@@ -54,7 +59,13 @@ const bookRoom = (currentUser,event,availableRooms) => {
       'date': date,
       'roomNumber': rooms.roomNumber
    }
-   updateBookings(bookingObject)
+   updateBookings(bookingObject);
+
+   setTimeout( function(){
+      updateUserData(currentUser.id)
+      console.log('wait')
+   },1000)
+   
 
 }
 
@@ -88,4 +99,3 @@ logInButton.addEventListener('click', function(event) {
 logOutButton.addEventListener('click', function() {
    location.reload()
 })
-
