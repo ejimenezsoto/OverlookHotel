@@ -7,6 +7,7 @@ class User {
         this.allBookings = [];
         this.totalSpent = 0;
     };
+
     getAllBookings(bookings){
         this.futureBookings = [];
         this.pastBookings = [];
@@ -21,8 +22,25 @@ class User {
                     this.futureBookings.push(booking)
                 }
             }
-        }) 
+        })
+        this.sortBookingsByDate()
     }
-  
+    sortBookingsByDate(){
+        this.futureBookings = this.futureBookings.sort((a,b) => new Date(a.date) - new Date(b.date));
+        this.pastBookings = this.pastBookings.sort((a,b) => new Date(b.date) - new Date(a.date));
+    }
+
+    returnTotalSpent(allRooms){
+        allRooms.forEach(room => {
+            this.pastBookings.forEach(booking => {     
+               if(booking.roomNumber === room.roomNumber){
+                   this.totalSpent += room.costPerNight
+               }
+            })
+        })
+        return this.totalSpent.toFixed(2)
+    }
+
+
 };
 module.exports = User;

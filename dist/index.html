@@ -9,20 +9,19 @@
 <body>
   <section class="user-dashboard-section">
     <h1 class="user-dashboard-welcome-message">Welcome #userName to your dashboard!</h1>
-
     <article class="past-bookings">
       <table class="table">
         <thead>
           <tr>
-            <h1>Past Bookings</h1>
+              Past Bookings
             <th colspan="1">Date</th>
             <th colspan="1">Room Number</th>
             <th colspan="1">Room Type</th>
           </tr>
         </thead>
-        <tbody class="table" id="past-bookings">
+        <tbody class="table" id="past-bookings-table">
           <tr>
-            <td>stay dates</td>
+            <td>dates</td>
             <td>room number</td>
             <td>room type</td>
           </tr>
@@ -33,13 +32,13 @@
       <table class="table">
         <thead>
           <tr>
-            <h1>Future Stays</h1>
+            Future Stays
             <th>Date</th>
             <th>Room Number</th>
             <th>Room Type</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class='table' id='future-bookings-table'>
           <tr>
             <td>stay date</td>
             <td>room number</td>
@@ -47,14 +46,10 @@
           </tr>
         </tbody>
       </table>
+      <h1 class='total-spent'>Total Spent</h1>
     </article>
   </section>
 
- 
-  
-
-
-  
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>
