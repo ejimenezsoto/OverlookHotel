@@ -31,6 +31,7 @@ class User {
     }
 
     returnTotalSpent(allRooms){
+        this.totalSpent = 0;
         allRooms.forEach(room => {
             this.pastBookings.forEach(booking => {     
                if(booking.roomNumber === room.roomNumber){
