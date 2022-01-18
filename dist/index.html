@@ -9,7 +9,7 @@
 <body>
   <nav>
     <div class="nav-buttons hidden">
-      <h1 class="user-dashboard-welcome-message hidden">Welcome #userName to your dashboard!</h1>
+      <h1 class="user-dashboard-welcome-message table-header">Welcome #userName to your dashboard!</h1>
       <label>Check Availability</label>
       <input id="checkDateAvail" type="date" required>
       <select id="checkRoomType" name="Room Type">
@@ -19,6 +19,7 @@
         <option class="filter" value="junior suite">Junior Suite</option>
         <option class="filter" value="single room" >Single Room</option>
       </select>
+      <button class="log-out-button hidden">Log Out</button>
     </div>
   </nav>
   <section class="log-in-Section">
@@ -38,7 +39,7 @@
       <table class="table">
         <thead>
           <tr>
-              Past Bookings
+              <p class="table-header">Past Bookings</p>
             <th colspan="1">Date</th>
             <th colspan="1">Room Number</th>
             <th colspan="1">Room Type</th>
@@ -57,7 +58,7 @@
       <table class="table">
         <thead>
           <tr>
-            Future Stays
+            <p class="table-header">Future Stays</p>
             <th>Date</th>
             <th>Room Number</th>
             <th>Room Type</th>

@@ -8,6 +8,8 @@ const pastBookingsTable = document.getElementById('past-bookings-table');
 const futureBookingsTable = document.getElementById('future-bookings-table');
 const totalSpent = document.querySelector('.total-spent')
 const allRoomsSection = document.querySelector('.all-rooms-section');
+const navSection = document.querySelector('.nav-buttons');
+const logInSection = document.querySelectorAll('.log-in-Section');
 
 
 

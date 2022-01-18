@@ -20,4 +20,10 @@ const updateBookings = (booking) => {
       .then(response => console.log(response.json()))
   };
 
-export {customerData, roomData, bookingData, updateBookings};
+  const getUserData = (id) => {
+    const url = `http://localhost:3001/api/v1/customers/${id}`;
+    return fetch(url)
+      .then((response) => response.json());
+  }
+
+export {customerData, roomData, bookingData, updateBookings,getUserData};
