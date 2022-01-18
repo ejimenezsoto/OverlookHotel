@@ -8,4 +8,16 @@ const roomData = fetch('http://localhost:3001/api/v1/rooms')
 const bookingData = fetch('http://localhost:3001/api/v1/bookings')
 .then((response) => response.json())
 
-export {customerData, roomData, bookingData};
+
+const updateBookings = (booking) => {
+    return fetch("http://localhost:3001/api/v1/bookings", {
+      method: "POST",
+      body: JSON.stringify(booking),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => console.log(response.json()))
+  };
+
+export {customerData, roomData, bookingData, updateBookings};

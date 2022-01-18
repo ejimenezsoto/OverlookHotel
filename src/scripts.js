@@ -3,12 +3,13 @@ import User from './classes/User';
 import Bookings from './classes/Bookings';
 import Hotel from './classes/Hotel'
 import Room from './classes/Room';
-import { customerData, roomData, bookingData } from './apiCalls';
+import { customerData, roomData, bookingData,updateBookings } from './apiCalls';
 import domUpdates from './domUpdates'
 
 
 const checkBookings = document.getElementById('checkDateAvail');
 const filterRoom = document.getElementById('checkRoomType');
+const allRoomsSection = document.querySelector('.all-rooms-section');
 
 
 //Global Variables
@@ -31,22 +32,37 @@ Promise.all([customerData, roomData, bookingData])
    domUpdates.displayDashboardInfo(currentUser,allRooms);
 
    hotel = new Hotel(currentUser,allRooms,allBookings)
-   
-   
 });
 
+const bookRoom = (currentUser,event,availableRooms) => {
+   const date = new Date(checkBookings.value).toISOString().split('T')[0].split('-').join('/');
+   const rooms = availableRooms.find(room => event.target.id == room.roomNumber)
+   console.log(event.target.id)
+   const bookingObject = {
+      'userID': currentUser.id,
+      'date': date,
+      'roomNumber': rooms.roomNumber
+   }
+   updateBookings(bookingObject)
 
-
-
+}
 
 checkBookings.addEventListener('change', function (){
      hotel.filterAvailableRooms(checkBookings.value)
       
-})
+});
 
 filterRoom.addEventListener('change', function (){
    domUpdates.filterRoomType(filterRoom.value,hotel.availableRooms)
 })
+
+allRoomsSection.addEventListener('click', function(event) {
+   bookRoom(currentUser,event,hotel.availableRooms.flat(1))
+})
+
+
+
+
 
 
 
