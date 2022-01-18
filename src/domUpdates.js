@@ -1,11 +1,13 @@
 import User from "./classes/User";
 import Bookings from "./classes/Bookings";
+import { roomData } from "./apiCalls";
 
 const userDashboardSection = document.querySelector('.user-dashboard-section');
 const welcomeMessage = document.querySelector('.user-dashboard-welcome-message');
 const pastBookingsTable = document.getElementById('past-bookings-table');
 const futureBookingsTable = document.getElementById('future-bookings-table');
 const totalSpent = document.querySelector('.total-spent')
+const allRoomsSection = document.querySelector('.all-rooms-section');
 
 
 
@@ -53,11 +55,61 @@ const domUpdates = {
             </tr>
             `
         })
-
         totalSpent.innerText = `Your total spent at the Overlook Hotel is ${currentUser.totalSpent.toFixed(2)}`
+    },
+
+
+    filterRoomType(roomValue,availableRooms){
+        allRoomsSection.innerHTML = '';
+        if(roomValue === 'all-rooms'){
+            this.displayRooms(availableRooms)
+        } else {
+            const roomType = availableRooms.flat(1).filter(room => room.type === roomValue)
+            console.log(roomType)
+            if(roomType.length > 0){
+                roomType.forEach(room => {
+                    allRoomsSection.innerHTML += `
+                <div>
+                    <ul>
+                        <li>${room.type}</li>
+                        <li>${room.roomNumber}</li>
+                        <li>${room.hasBidet}</li>
+                        <li>${room.numBeds}</li>
+                        <li>${room.costPerNight}</li>
+                    </ul>
+                    <button class='book-button' id=${room.roomNumber}>Book</button>
+                </div>
+                    `
+                })
+            } else {
+                allRoomsSection.innerHTML = '<h1>Sorry no rooms match your choices!</h1>'
+            }
+        }
+    },
 
 
 
+    displayRooms(availableRooms){
+        allRoomsSection.innerHTML = '';
+        if(availableRooms.length === 0){
+            allRoomsSection.innerHTML = `<h1> Sorry theres no rooms available for that date! </h1>`
+        } else {
+            availableRooms.flat(1).forEach(room => {
+                console.log(room)
+                allRoomsSection.innerHTML += `
+                <div>
+                    <ul>
+                    <li>${room.type}</li>
+                    <li>${room.roomNumber}</li>
+                    <li>${room.hasBidet}</li>
+                    <li>${room.numBeds}</li>
+                    <li>${room.costPerNight}</li>
+                    </ul>
+                    <button class='book-button' id=${room.roomNumber}>Book</button>
+                </div>
+                `
+            })
+        }
     }
 
 

@@ -7,8 +7,33 @@
   <title>Overlook Hotel</title>
 </head>
 <body>
-  <section class="user-dashboard-section">
-    <h1 class="user-dashboard-welcome-message">Welcome #userName to your dashboard!</h1>
+  <nav>
+    <div class="nav-buttons hidden">
+      <h1 class="user-dashboard-welcome-message hidden">Welcome #userName to your dashboard!</h1>
+      <label>Check Availability</label>
+      <input id="checkDateAvail" type="date" required>
+      <select id="checkRoomType" name="Room Type">
+        <option class="filter" selected="selected" value="all-rooms">All Rooms</option>
+        <option class="filter" value="residential suite">Residential Suite</option>
+        <option class="filter" value="suite">Suite</option>
+        <option class="filter" value="junior suite">Junior Suite</option>
+        <option class="filter" value="single room" >Single Room</option>
+      </select>
+    </div>
+  </nav>
+  <section class="log-in-Section">
+    <h1>Please Log In</h1>
+    <form action="">
+      <label for="username">Please Enter Username</label>
+      <input type="text" name="username" id="username">
+      <label for="password">Please Enter Password</label>
+      <input type="text" name="password" id="password">
+      <button id="log-in-button">Log In</button>
+    </form>
+  </section>
+  <section class="all-rooms-section hidden">
+  </section>
+  <section class="user-dashboard-section hidden">
     <article class="past-bookings">
       <table class="table">
         <thead>
