@@ -16,7 +16,9 @@ Promise.all([customerData, roomData, bookingData])
    data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
    data[1].rooms.forEach(room => allRooms.push(new Room(room)))
    data[0].customers.forEach(user => allUsers.push(new User(user)))
-    console.log(allUsers)
+   currentUser = allUsers[Math.floor(Math.random() * allUsers.length)]
+   currentUser.getAllBookings(allBookings)
+
    
 });
 
