@@ -29,24 +29,26 @@ let hotel;
 let id;
 
  export const updateUserData = (id) => {
+  
 
       Promise.all([customerData, roomData, bookingData])
       .then(data => {
-         domUpdates.show([userDashboardSection])
          allRooms = [];
          allBookings = [];
          hotel = '';
          currentUser = '';
          data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
+         console.log(allBookings.length)
          data[1].rooms.forEach(room => allRooms.push(new Room(room)));
          data[0].customers.forEach(user => allUsers.push(new User(user,allRooms)));
          currentUser = allUsers.find(user => user.id === id);
          hotel = new Hotel(currentUser,allRooms,allBookings);
          currentUser.getAllBookings(allBookings);
          currentUser.returnTotalSpent(allRooms);
-         
+         console.log(currentUser.futureBookings)
          domUpdates.displayDashboardInfo(currentUser,allRooms);
       })
+  
 }
 
 const bookRoom = (currentUser,event,availableRooms) => {
@@ -64,7 +66,10 @@ const bookRoom = (currentUser,event,availableRooms) => {
    }
 
    updateBookings(bookingObject)
-   .then(response => updateUserData(id))
+   .then( () => {
+   updateUserData(id)
+   console.log('worked1')
+   })
 }
 
 
