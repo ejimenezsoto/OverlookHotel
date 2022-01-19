@@ -1,4 +1,5 @@
 
+
 const customerData = fetch('http://localhost:3001/api/v1/customers')
 .then((response) => response.json())
 
@@ -17,13 +18,7 @@ const updateBookings = (booking) => {
         "Content-Type": "application/json",
       },
     })
-      .then(response => console.log(response.json()))
+      
   };
 
-  const getUserData = (id) => {
-    const url = `http://localhost:3001/api/v1/customers/${id}`;
-    return fetch(url)
-      .then((response) => response.json());
-  }
-
-export {customerData, roomData, bookingData, updateBookings,getUserData};
+export {customerData, roomData, bookingData, updateBookings};

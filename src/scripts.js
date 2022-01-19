@@ -3,7 +3,7 @@ import User from './classes/User';
 import Bookings from './classes/Bookings';
 import Hotel from './classes/Hotel'
 import Room from './classes/Room';
-import { customerData, roomData, bookingData,updateBookings, getUserData } from './apiCalls';
+import { customerData, roomData, bookingData,updateBookings} from './apiCalls';
 import domUpdates from './domUpdates'
 
 
@@ -26,24 +26,27 @@ let allUsers = [];
 let allRooms = [];
 let allBookings = [];
 let hotel;
+let id;
 
-const updateUserData = (id) => {
-   Promise.all([customerData, roomData, bookingData])
-   .then(data => {
-      allRooms = [];
-      allBookings = [];
-      hotel = '';
-      currentUser = '';
-      data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
-      data[1].rooms.forEach(room => allRooms.push(new Room(room)));
-      data[0].customers.forEach(user => allUsers.push(new User(user,allRooms)));
-      currentUser = allUsers.find(user => user.id === id);
-      currentUser.returnTotalSpent(allRooms);
-      currentUser.getAllBookings(allBookings)
-      currentUser.returnTotalSpent(allRooms)
-      domUpdates.displayDashboardInfo(currentUser,allRooms)
-      hotel = new Hotel(currentUser,allRooms,allBookings)
-   })
+ export const updateUserData = (id) => {
+
+      Promise.all([customerData, roomData, bookingData])
+      .then(data => {
+         domUpdates.show([userDashboardSection])
+         allRooms = [];
+         allBookings = [];
+         hotel = '';
+         currentUser = '';
+         data[2].bookings.forEach(booking => allBookings.push(new Bookings(booking)));
+         data[1].rooms.forEach(room => allRooms.push(new Room(room)));
+         data[0].customers.forEach(user => allUsers.push(new User(user,allRooms)));
+         currentUser = allUsers.find(user => user.id === id);
+         hotel = new Hotel(currentUser,allRooms,allBookings);
+         currentUser.getAllBookings(allBookings);
+         currentUser.returnTotalSpent(allRooms);
+         
+         domUpdates.displayDashboardInfo(currentUser,allRooms);
+      })
 }
 
 const bookRoom = (currentUser,event,availableRooms) => {
@@ -59,14 +62,9 @@ const bookRoom = (currentUser,event,availableRooms) => {
       'date': date,
       'roomNumber': rooms.roomNumber
    }
-   updateBookings(bookingObject);
 
-   setTimeout( function(){
-      updateUserData(currentUser.id)
-      console.log('wait')
-   },1000)
-   
-
+   updateBookings(bookingObject)
+   .then(response => updateUserData(id))
 }
 
 
@@ -85,13 +83,11 @@ allRoomsSection.addEventListener('click', function(event) {
 logInButton.addEventListener('click', function(event) {
    event.preventDefault()
    if(username.value.slice(0,8) === 'customer' && password.value === 'overlook2021'){
-      console.log('worked')
-      let id = parseInt(username.value.substring(8))
+       id = parseInt(username.value.substring(8))
 
       domUpdates.hide([logInSection])
       domUpdates.show([allRoomsSection,navSection,userDashboardSection,logOutButton])
       
-      getUserData(id);
       updateUserData(id)
    }
 })
@@ -99,3 +95,4 @@ logInButton.addEventListener('click', function(event) {
 logOutButton.addEventListener('click', function() {
    location.reload()
 })
+
