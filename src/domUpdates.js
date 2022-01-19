@@ -67,17 +67,16 @@ const domUpdates = {
             this.displayRooms(availableRooms)
         } else {
             const roomType = availableRooms.flat(1).filter(room => room.type === roomValue)
-            console.log(roomType)
             if(roomType.length > 0){
                 roomType.forEach(room => {
                     allRoomsSection.innerHTML += `
                 <div>
                     <ul>
-                        <li>${room.type}</li>
-                        <li>${room.roomNumber}</li>
-                        <li>${room.hasBidet}</li>
-                        <li>${room.numBeds}</li>
-                        <li>${room.costPerNight}</li>
+                        <li>Room Type:${room.type}</li>
+                        <li>Room Number:${room.roomNumber}</li>
+                        <li>Has Bidet?:${room.hasBidet}</li>
+                        <li>Number of Beds:${room.numBeds}</li>
+                        <li>Cost Per Night:${room.costPerNight}</li>
                     </ul>
                     <button class='book-button' id=${room.roomNumber}>Book</button>
                 </div>
@@ -97,15 +96,14 @@ const domUpdates = {
             allRoomsSection.innerHTML = `<h1> Sorry theres no rooms available for that date! </h1>`
         } else {
             availableRooms.flat(1).forEach(room => {
-                console.log(room)
                 allRoomsSection.innerHTML += `
                 <div>
                     <ul>
-                    <li>${room.type}</li>
-                    <li>${room.roomNumber}</li>
-                    <li>${room.hasBidet}</li>
-                    <li>${room.numBeds}</li>
-                    <li>${room.costPerNight}</li>
+                    <li>Room Type   -    ${room.type.toUpperCase()}</li>
+                    <li>Room #      -    ${room.roomNumber}</li>
+                    <li>Has Bidet?  -    ${room.hasBidet}</li>
+                    <li># of Beds   -    ${room.numBeds}</li>
+                    <li>Cost/Night  -    $${room.costPerNight}</li>
                     </ul>
                     <button class='book-button' id=${room.roomNumber}>Book</button>
                 </div>
