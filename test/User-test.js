@@ -44,6 +44,6 @@ describe('User', () => {
     })
 
     it('should return total cost of rooms', () => {
-        expect(user.totalSpent).to.equal(2536.40)
+        expect(user.totalSpent).to.equal(837.81)
     })
 })
