@@ -30,7 +30,6 @@ let id;
 
  export const updateUserData = (id) => {
   
-
       Promise.all([customerData, roomData, bookingData])
       .then(data => {
          allRooms = [];
@@ -45,7 +44,6 @@ let id;
          hotel = new Hotel(currentUser,allRooms,allBookings);
          currentUser.getAllBookings(allBookings);
          currentUser.returnTotalSpent(allRooms);
-         console.log(currentUser.futureBookings)
          domUpdates.displayDashboardInfo(currentUser,allRooms);
       })
   
@@ -68,7 +66,6 @@ const bookRoom = (currentUser,event,availableRooms) => {
    updateBookings(bookingObject)
    .then( () => {
    updateUserData(id)
-   console.log('worked1')
    })
 }
 

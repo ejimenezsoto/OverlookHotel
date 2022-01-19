@@ -13,24 +13,35 @@ html {
   display: none;
 }
 
-
 table,
 th,
-td,
-#roomDisplay {
+td {
   margin-top: 2em;
-  border: 1px black;
-  border-style: ridge;
   width: 40%;
-}
-
-th,
-td,
-#roomDisplay {
+  border: 1px black;
+  border-style: solid;
   padding: .5em;
 }
 
 .table-header{
   font-size: 2em;
   margin-top: 10px;
+}
+li{
+  padding: 5px;
+}
+
+.check-avail-div{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+}
+
+.header-div{
+  display: flex;
+  justify-content: space-between;
+}
+.total-spent{
+  margin-top: 20px;
+  font-size: 2em;
 }
