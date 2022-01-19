@@ -9,26 +9,30 @@
 <body>
   <nav>
     <div class="nav-buttons hidden">
-      <h1 class="user-dashboard-welcome-message table-header">Welcome #userName to your dashboard!</h1>
-      <label>Check Availability</label>
-      <input id="checkDateAvail" type="date" required>
-      <select id="checkRoomType" name="Room Type">
-        <option class="filter" selected="selected" value="all-rooms">All Rooms</option>
-        <option class="filter" value="residential suite">Residential Suite</option>
-        <option class="filter" value="suite">Suite</option>
-        <option class="filter" value="junior suite">Junior Suite</option>
-        <option class="filter" value="single room" >Single Room</option>
-      </select>
-      <button class="log-out-button hidden">Log Out</button>
+      <div class="header-div">
+        <h1 class="user-dashboard-welcome-message table-header">Welcome #userName to your dashboard!</h1>
+        <button class="log-out-button hidden">Log Out</button>
+      </div>
+      <div class="check-avail-div">
+        <label>Check Availability</label>
+        <input id="checkDateAvail" type="date" required>
+        <select id="checkRoomType" name="Room Type">
+          <option class="filter" selected="selected" value="all-rooms">All Rooms</option>
+          <option class="filter" value="residential suite">Residential Suite</option>
+          <option class="filter" value="suite">Suite</option>
+          <option class="filter" value="junior suite">Junior Suite</option>
+          <option class="filter" value="single room" >Single Room</option>
+        </select>
+      </div>
     </div>
   </nav>
   <section class="log-in-Section">
     <h1>Please Log In</h1>
     <form action="">
-      <label for="username">Please Enter Username</label>
-      <input type="text" name="username" id="username">
-      <label for="password">Please Enter Password</label>
-      <input type="text" name="password" id="password">
+      <label for="username">Enter Username:</label>
+      <input type="text" name="username" id="username" placeholder="username">
+      <label for="password">Enter Password:</label>
+      <input type="text" name="password" id="password" placeholder="password">
       <button id="log-in-button">Log In</button>
     </form>
   </section>
@@ -46,11 +50,6 @@
           </tr>
         </thead>
         <tbody class="table" id="past-bookings-table">
-          <tr>
-            <td>dates</td>
-            <td>room number</td>
-            <td>room type</td>
-          </tr>
         </tbody>
       </table>
     </article>
@@ -65,11 +64,6 @@
           </tr>
         </thead>
         <tbody class='table' id='future-bookings-table'>
-          <tr>
-            <td>stay date</td>
-            <td>room number</td>
-            <td>roomtype</td>
-          </tr>
         </tbody>
       </table>
       <h1 class='total-spent'>Total Spent</h1>
